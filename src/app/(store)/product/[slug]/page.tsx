@@ -1,3 +1,4 @@
+import { AddToCartButton } from '@/components/addToCartBurron'
 import { api } from '@/data/api'
 import { Product } from '@/data/types/products'
 import { Metadata } from 'next'
@@ -70,6 +71,7 @@ export default async function ProductPage({ params }: ProductProps) {
             })}
           </span>
           <span className="text-sm text-zinc-400">
+            Em até 12x s/ juros de{' '}
             {(product.price / 12).toLocaleString('pt-BR', {
               style: 'currency',
               currency: 'BRL',
@@ -104,13 +106,8 @@ export default async function ProductPage({ params }: ProductProps) {
               GG
             </button>
           </div>
-          <button
-            type="button"
-            className="mt-8 flex h-12 p-3 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white"
-          >
-            Adicionar ao carrinho
-          </button>
         </div>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   )
